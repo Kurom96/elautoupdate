@@ -10,9 +10,9 @@ function confirmRestart(releaseNotes) {
         dialog.showMessageBox({
             type: "info",
             title: "Update Available",
-            message: "アプリの更新があります。",
+            message: "アプリの更新があります。再起動して更新します？",
             detail: releaseNotes,
-            buttons: ["Restart", "Later"]
+            buttons: ["再起動", "あとで"]
         }, function (response) {
             if (response === 0) {
                 resolve();
@@ -33,8 +33,17 @@ function checkUpdate() {
         });
     });
 
-    autoUpdater.on("error", function (e) {
-        console.error(e.message);
+    autoUpdater.on("update-not-available", function () {
+        dialog.showMessageBox({
+            message: "アップデートはありません",
+            buttons: ["OK"]
+        });
+    });
+    autoUpdater.on("error", function () {
+        dialog.showMessageBox({
+            message: "アップデートエラーが起きました",
+            buttons: ["OK"]
+        });
     });
 
     autoUpdater.setFeedURL(feedURL);

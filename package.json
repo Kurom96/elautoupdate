@@ -1,11 +1,13 @@
 {
   "name": "elautoupdate",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 2",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "build",
+    "publish": "build --publish always"
   },
   "author": "",
   "license": "ISC",
