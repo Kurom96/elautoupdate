@@ -24,6 +24,13 @@ function confirmRestart(releaseNotes) {
 }
 
 function checkUpdate() {
+
+    // NB: Squirrel.Mac has a brain-dead way to disable itself system-wide
+    // for any app using Squirrel. Nerf that shit so hard
+    if (process.env.DISABLE_UPDATE_CHECK) {
+        delete process.env.DISABLE_UPDATE_CHECK;
+    }
+
     var feedURL = "https://elautoupdate.herokuapp.com/update/darwin_" + process.arch + "/" + app.getVersion();
     console.log(feedURL);
 
