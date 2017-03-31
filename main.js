@@ -3,6 +3,7 @@
 var electron = require('electron');
 var app = electron.app;
 var BrowserWindow = electron.BrowserWindow;
+var checkUpdate = require('./checkUpdate');
 
 var mainWindow = null;
 
@@ -20,4 +21,6 @@ app.on('ready', function() {
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
+
+  checkUpdate();
 });
