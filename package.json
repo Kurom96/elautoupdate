@@ -10,6 +10,37 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^1.6.2"
+    "electron": "^1.6.2",
+    "electron-builder": "^16.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kurom96/elautoupdate.git"
+  },
+  "build": {
+    "appId": "app.kurom.elautoupdate",
+    "mac": {
+      "icon": "icon/icon.icns",
+      "category": "public.app-category.social-networking"
+    },
+    "dmg": {
+      "icon": "icon/icon.icns",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "directories": {
+      "app": ".",
+      "output": "release"
+    }
   }
 }
